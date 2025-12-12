@@ -8,10 +8,16 @@ app = Flask(__name__)
 def hello_world():
     return render_template('hello.html')
 
+# -----------------------------
+# Exercice 2
+# -----------------------------
 @app.route("/contact/")
 def MaPremiereAPI():
     return "<h2>Ma page de contact</h2>"
 
+# -----------------------------
+# Exercice 3
+# -----------------------------
 @app.route('/tawarano/')
 def meteo():
     response = urlopen(
@@ -30,6 +36,13 @@ def meteo():
         })
 
     return jsonify(results=results)
+
+# -----------------------------
+# Exercice 3 bis (NOUVEAU)
+# -----------------------------
+@app.route("/rapport/")
+def mongraphique():
+    return render_template("graphique.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
