@@ -1,55 +1,220 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact</title>
   <style>
-    body { font-family: Arial, sans-serif; background:#f6f7fb; margin:0; }
-    .container { max-width: 700px; margin: 50px auto; padding: 25px; background:white; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,.08); }
-    h1 { margin-top: 0; }
-    .row { display:flex; gap:12px; }
-    .field { flex:1; display:flex; flex-direction:column; margin-bottom:14px; }
-    label { font-weight:600; margin-bottom:6px; }
-    input, textarea {
-      padding: 12px; border:1px solid #ddd; border-radius:10px; outline:none;
-      font-size: 14px; background:#fff;
+    * { box-sizing: border-box; }
+
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+
+      /* Image de fond (URL externe) */
+      background-image:
+        linear-gradient(rgba(10, 14, 30, 0.65), rgba(10, 14, 30, 0.65)),
+        url("https://img.freepik.com/photos-gratuite/northern-light-aurora-borealis-kirkjufell-islande-montagnes-kirkjufell-hiver_335224-681.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+
+      color:#e9ecff;
     }
-    input:focus, textarea:focus { border-color:#6a5acd; box-shadow:0 0 0 3px rgba(106,90,205,.15); }
-    textarea { min-height: 140px; resize: vertical; }
-    button {
-      padding: 12px 16px; border: none; border-radius: 10px;
-      background:#6a5acd; color:white; font-weight:700; cursor:pointer;
+
+    .wrap{
+      width:100%;
+      max-width: 980px;
+      display:grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap:18px;
     }
-    button:hover { opacity: .95; }
-    .hint { color:#666; font-size: 13px; margin-top: 8px; }
+
+    .card{
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 16px;
+      box-shadow: 0 18px 45px rgba(0,0,0,.35);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+
+    .left{
+      padding:28px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(46, 213, 255, 0.18);
+      border: 1px solid rgba(46, 213, 255, 0.35);
+      color:#d7f7ff;
+      font-weight:700;
+      font-size:13px;
+      margin-bottom:14px;
+    }
+
+    h1{
+      margin:0 0 8px 0;
+      font-size: 30px;
+    }
+
+    p{
+      margin:0;
+      color: rgba(233,236,255,0.85);
+      line-height: 1.5;
+      max-width: 48ch;
+    }
+
+    .info{
+      margin-top:18px;
+      display:grid;
+      gap:10px;
+    }
+
+    .pill{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 14px;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: rgba(233,236,255,0.9);
+      font-size: 14px;
+    }
+
+    .pill b{
+      color:#ffffff;
+      font-weight:800;
+    }
+
+    .right{
+      padding:22px;
+    }
+
+    form{
+      display:grid;
+      gap:12px;
+    }
+
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+
+    label{
+      font-size: 12px;
+      font-weight: 800;
+      color: rgba(233,236,255,0.85);
+      margin-bottom:6px;
+      display:block;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+    }
+
+    input, textarea{
+      width:100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(10,14,30,0.65);
+      color:#e9ecff;
+      outline:none;
+      font-size: 14px;
+    }
+
+    input::placeholder,
+    textarea::placeholder{
+      color: rgba(233,236,255,0.45);
+    }
+
+    input:focus,
+    textarea:focus{
+      border-color: rgba(46, 213, 255, .65);
+      box-shadow: 0 0 0 3px rgba(46, 213, 255, .18);
+    }
+
+    textarea{
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .btn{
+      border: none;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-weight: 900;
+      cursor:pointer;
+      width: 100%;
+      background: linear-gradient(135deg, #2ed5ff, #6a5acd);
+      color:#0b1020;
+    }
+
+    .note{
+      font-size: 12px;
+      color: rgba(233,236,255,0.65);
+      text-align:center;
+      margin-top:10px;
+    }
+
+    @media (max-width: 860px){
+      .wrap{
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <h1>Contact</h1>
-    <p>Envoie-moi un message via ce formulaire (pas d’enregistrement, exercice design).</p>
+  <div class="wrap">
+    <div class="card left">
+      <div class="badge">🌌 Contact</div>
+      <h1>Contact</h1>
+      <p>
+        Laisse-moi un message via ce formulaire.
+        (Exercice design : pas d’enregistrement requis.)
+      </p>
 
-    <form>
-      <div class="row">
-        <div class="field">
-          <label for="nom">Nom</label>
-          <input id="nom" type="text" placeholder="Votre nom">
-        </div>
-        <div class="field">
-          <label for="prenom">Prénom</label>
-          <input id="prenom" type="text" placeholder="Votre prénom">
-        </div>
+      <div class="info">
+        <div class="pill"><span>Projet</span> <b>Métriques – Flask</b></div>
+        <div class="pill"><span>Route</span> <b>/contact/</b></div>
+        <div class="pill"><span>Objectif</span> <b>Design & responsive</b></div>
       </div>
+    </div>
 
-      <div class="field">
-        <label for="message">Message</label>
-        <textarea id="message" placeholder="Écrivez votre message ici..."></textarea>
-      </div>
+    <div class="card right">
+      <form>
+        <div class="row">
+          <div>
+            <label for="nom">Nom</label>
+            <input id="nom" type="text" placeholder="Ex : Dupont" />
+          </div>
+          <div>
+            <label for="prenom">Prénom</label>
+            <input id="prenom" type="text" placeholder="Ex : Teddy" />
+          </div>
+        </div>
 
-      <button type="button">Envoyer</button>
-      <div class="hint">Astuce : teste le rendu sur mobile aussi (responsive).</div>
-    </form>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Écris ton message ici..."></textarea>
+        </div>
+
+        <button class="btn" type="button">Envoyer le message</button>
+        <div class="note">(Bouton non connecté – exercice esthétique)</div>
+      </form>
+    </div>
   </div>
 </body>
 </html>
