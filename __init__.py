@@ -9,14 +9,14 @@ def hello_world():
     return render_template('hello.html')
 
 # -----------------------------
-# Exercice 2
+# Exercice 2 : /contact/
 # -----------------------------
 @app.route("/contact/")
 def MaPremiereAPI():
     return "<h2>Ma page de contact</h2>"
 
 # -----------------------------
-# Exercice 3
+# Exercice 3 : /tawarano/
 # -----------------------------
 @app.route('/tawarano/')
 def meteo():
@@ -38,11 +38,18 @@ def meteo():
     return jsonify(results=results)
 
 # -----------------------------
-# Exercice 3 bis (NOUVEAU)
+# Exercice 3 bis / 3 ter : graphique
 # -----------------------------
 @app.route("/rapport/")
 def mongraphique():
     return render_template("graphique.html")
+
+# -----------------------------
+# Exercice 4 : histogramme (NOUVEAU)
+# -----------------------------
+@app.route("/histogramme/")
+def histogramme():
+    return render_template("histogramme.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
