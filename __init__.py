@@ -4,16 +4,19 @@ import json
 
 app = Flask(__name__)
 
+# -----------------------------
+# Page d'accueil
+# -----------------------------
 @app.route('/')
 def hello_world():
     return render_template('hello.html')
 
 # -----------------------------
-# Exercice 2 : /contact/
+# Exercice 5 : /contact/ (HTML stylé)
 # -----------------------------
 @app.route("/contact/")
 def MaPremiereAPI():
-    return "<h2>Ma page de contact</h2>"
+    return render_template("contact.html")
 
 # -----------------------------
 # Exercice 3 : /tawarano/
@@ -38,14 +41,14 @@ def meteo():
     return jsonify(results=results)
 
 # -----------------------------
-# Exercice 3 bis / 3 ter : graphique
+# Exercice 3 bis / 3 ter : graphique ligne
 # -----------------------------
 @app.route("/rapport/")
 def mongraphique():
     return render_template("graphique.html")
 
 # -----------------------------
-# Exercice 4 : histogramme (NOUVEAU)
+# Exercice 4 : histogramme
 # -----------------------------
 @app.route("/histogramme/")
 def histogramme():
